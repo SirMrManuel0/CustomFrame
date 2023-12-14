@@ -68,7 +68,7 @@ Constructs a `CustomFrame` with a custom size based on the golden ratio.
 Calculates the scaled dimension based on width and height scales.
 
 ### `getScaledDimension(double widthMultiplier, double widthScale,
-                     double heightMultiplier, double heightScale): Dimension`
+###                     double heightMultiplier, double heightScale): Dimension`
 
 Calculates the scaled dimension based on width and height multipliers and scales.
 
