@@ -21,7 +21,7 @@ CustomFrame goldenRatioFrame = new CustomFrame(CustomFrame.PHI_HEIGHT, 1, 1, "Go
 
 ```java
 CustomFrame frameWithBackground = new CustomFrame("Frame with Background", true);
-frameWithBackground.setBackgroundImage(loadImage("background.jpg"));
+frameWithBackground.setBackgroundImage(frameWithBackground.loadImage("background.jpg"));
 ```
 
 ### Scaled Dimensions
@@ -72,6 +72,10 @@ Calculates the scaled dimension based on width and height scales.
 Calculates the scaled dimension based on width and height multipliers and scales.
 
 ### `setBackgroundImage(String path): void`
+
+Sets the background image of the frame.
+
+### `setBackgroundImage(Image image)`
 
 Sets the background image of the frame.
 
