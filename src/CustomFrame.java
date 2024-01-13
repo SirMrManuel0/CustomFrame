@@ -7,7 +7,7 @@ import java.util.Enumeration;
  * and customization for creating GUI windows.
  *
  * @author SirMrManuel0
- * @version 1.0
+ * @version 1.1
  */
 public class CustomFrame extends JFrame {
 
@@ -34,7 +34,7 @@ public class CustomFrame extends JFrame {
      * @param title The title of the frame.
      */
     public CustomFrame(String title) {
-        this(title, false); // Default to non-resizable
+        this(title, true); // Default to resizable
     }
 
     /**
@@ -141,6 +141,48 @@ public class CustomFrame extends JFrame {
             }
         });
     }
+    /**
+     * Sets the background image of the frame.
+     *
+     * @param image The background image.
+     */
+    public void setBackgroundImage(Image image) {
+        backgroundImage = image;
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+
+                g2d.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        });
+    }
+
+    /**
+     * Loads an image from the specified filename.
+     *
+     * @param filename The filename of the image.
+     * @param path The path to the image in case the getResource does not work.
+     * @return         The loaded image.
+     */
+    public Image loadImage(String filename, String path) {
+        try{
+            return new ImageIcon(getClass().getClassLoader().getResource(filename)).getImage();
+        } catch (Exception e){
+            return new ImageIcon(path).getImage();
+        }
+
+    }
+    /**
+     * Loads an image from the specified filename.
+     *
+     * @param filename The filename of the image.
+     * @return         The loaded image.
+     */
+    public Image loadImage(String filename) {
+        return new ImageIcon(getClass().getClassLoader().getResource(filename)).getImage();
+    }
 
     // Private helper methods
 
@@ -153,9 +195,10 @@ public class CustomFrame extends JFrame {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
         int screenHeight = (int) screenSize.getHeight();
+        int screenWidth = (int) screenSize.getWidth();
 
         frameHeight = (int) Math.round((screenHeight * heightMultiplier) / heightScale);
-        frameWidth = (int) Math.round((frameHeight * widthMultiplier) / widthScale);
+        frameWidth = (int) Math.round((screenWidth * widthMultiplier) / widthScale);
 
         setTitle(title);
         setSize(new Dimension(frameWidth, frameHeight));
