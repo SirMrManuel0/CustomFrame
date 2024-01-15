@@ -61,32 +61,182 @@ CustomFrame(int phi, double multiplier, double scale, String title, boolean resi
 
 Constructs a `CustomFrame` with a custom size based on the golden ratio.
 
+
+
 ## Methods
 
-### `getScaledDimension(double widthScale, double heightScale): Dimension`
+```java
+getScaledDimension(double widthScale, double heightScale)
+```
 
 Calculates the scaled dimension based on width and height scales.
 
-### `getScaledDimension(double widthMultiplier, double widthScale, double heightMultiplier, double heightScale): Dimension`
+* Params:
+    - `widthScale`: Scale factor for width.
+    - `heightScale`: Scale factor for height.
+* Returns: `Dimension`
+
+```java
+getScaledDimension(double widthMultiplier, double widthScale, double heightMultiplier, double heightScale)
+```
 
 Calculates the scaled dimension based on width and height multipliers and scales.
 
-### `setBackgroundImage(String path): void`
+* Params:
+    - `widthMultiplier`: Multiplier for the original width.
+    - `widthScale`: Scale factor for width.
+    - `heightMultiplier`: Multiplier for the original height.
+    - `heightScale`: Scale factor for height.
+* Returns: `Dimension`
+
+```java
+setBackgroundImage(String path)
+```
 
 Sets the background image of the frame.
 
-### `setBackgroundImage(Image image)`
+* Params:
+    - `path`: Path to the background image file.
+
+```java
+setBackgroundImage(Image image)
+```
 
 Sets the background image of the frame.
 
-### `loadImage(String filename)`
+* Params:
+    - `image`: Image to set as the background.
+
+```java
+loadImage(String filename)
+```
 
 Returns the loaded image.
 
-### `loadImage(String filename, String path)`
+* Params:
+    - `filename`: Name of the image file.
+* Returns: `Image`
+
+```java
+loadImage(String filename, String path)
+```
 
 Returns the loaded image.
-In case there is an error with the getResource, you can enter the path.
+
+* Params:
+    - `filename`: Name of the image file.
+    - `path`: Path to the image file.
+* Returns: `Image`
+
+```java
+scaleImageIcon(ImageIcon imageIcon, int width, int height)
+```
+
+Scales an image.
+
+* Params:
+    - `imageIcon`: The ImageIcon to scale.
+    - `width`: The desired width of the scaled icon.
+    - `height`: The desired height of the scaled icon.
+* Returns: The scaled ImageIcon.
+
+```java
+scaleImageIcon(ImageIcon imageIcon, double scaleWidth, double scaleHeight)
+```
+
+Scales an image.
+
+* Params:
+    - `imageIcon`: The ImageIcon to scale.
+    - `scaleWidth`: The scale width of the scaled icon (original width * scaleWidth).
+    - `scaleHeight`: The scale height of the scaled icon (original height * scaleHeight).
+* Returns: The scaled ImageIcon.
+
+```java
+scaleImage(Image img, int width, int height)
+```
+
+Scales an image.
+
+* Params:
+    - `img`: The Image to scale.
+    - `width`: The desired width of the scaled icon.
+    - `height`: The desired height of the scaled icon.
+* Returns: The scaled Image.
+
+```java
+scaleImage(Image img, double scaleWidth, double scaleHeight)
+```
+
+Scales an image.
+
+* Params:
+    - `img`: The Image to scale.
+    - `scaleWidth`: The scale width of the scaled icon (original width * scaleWidth).
+    - `scaleHeight`: The scale height of the scaled icon (original height * scaleHeight).
+* Returns: The scaled Image.
+
+```java
+getImageIconWidth(ImageIcon imageIcon)
+```
+
+Retrieves the width of an image represented by the provided ImageIcon object.
+
+* Params:
+    - `imageIcon`: The ImageIcon containing the image to query.
+* Returns: The width of the image in pixels.
+
+```java
+getImageIconHeight(ImageIcon imageIcon)
+```
+
+Retrieves the height of an image represented by the provided ImageIcon object.
+
+* Params:
+    - `imageIcon`: The ImageIcon containing the image to query.
+* Returns: The height of the image in pixels.
+
+```java
+getImageIconDimension(ImageIcon imageIcon)
+```
+
+Retrieves the dimensions of an image represented by the provided ImageIcon object as a Dimension object.
+
+* Params:
+    - `imageIcon`: The ImageIcon containing the image to query.
+* Returns: A Dimension object containing the width and height of the image.
+
+```java
+getImageWidth(Image image)
+```
+
+Retrieves the width of an image represented by the provided Image object.
+
+* Params:
+    - `image`: The Image containing the image to query.
+* Returns: The width of the image in pixels.
+
+```java
+getImageHeight(Image image)
+```
+
+Retrieves the height of an image represented by the provided Image object.
+
+* Params:
+    - `image`: The Image containing the image to query.
+* Returns: The height of the image in pixels.
+
+```java
+getImageDimension(Image image)
+```
+
+Retrieves the dimensions of an image represented by the provided Image object as a Dimension object.
+
+* Params:
+    - `image`: The ImageIcon containing the image to query.
+* Returns: A Dimension object containing the width and height of the image.
+
+
 
 ## License
 
