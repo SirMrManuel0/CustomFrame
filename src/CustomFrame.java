@@ -130,16 +130,7 @@ public class CustomFrame extends JFrame {
             // Handle exceptions, e.g., file not found
             e.printStackTrace();
         }
-
-        setContentPane(new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-
-                g2d.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-            }
-        });
+        setBackgroundImage(backgroundImage, 0, 0, getImageWidth(backgroundImage), getImageHeight(backgroundImage));
     }
     /**
      * Sets the background image of the frame.
@@ -147,6 +138,14 @@ public class CustomFrame extends JFrame {
      * @param image The background image.
      */
     public void setBackgroundImage(Image image) {
+        setBackgroundImage(image, 0, 0, getImageWidth(image), getImageHeight(image));
+    }
+
+    public void setBackgroundImage(Image image, int x, int y) {
+        setBackgroundImage(image, x, y, getImageWidth(image), getImageHeight(image));
+    }
+
+    public void setBackgroundImage(Image image, int x, int y, int width, int height){
         backgroundImage = image;
         setContentPane(new JPanel() {
             @Override
@@ -154,9 +153,11 @@ public class CustomFrame extends JFrame {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
 
-                g2d.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+                g2d.drawImage(backgroundImage, x, y, width, height, this);
             }
         });
+
+        repaint();
     }
 
     /**
@@ -167,11 +168,15 @@ public class CustomFrame extends JFrame {
      * @return         The loaded image.
      */
     public Image loadImage(String filename, String path) {
+
+        Image returne = null;
         try{
-            return new ImageIcon(getClass().getClassLoader().getResource(filename)).getImage();
-        } catch (Exception e){
-            return new ImageIcon(path).getImage();
-        }
+            returne = new ImageIcon(getClass().getClassLoader().getResource(filename)).getImage();
+        } catch (Exception e){}
+
+        if (returne.getHeight(this) == -1)
+            returne =  new ImageIcon(path).getImage();
+        return returne;
 
     }
     /**
