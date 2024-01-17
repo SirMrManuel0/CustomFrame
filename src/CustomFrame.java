@@ -174,7 +174,7 @@ public class CustomFrame extends JFrame {
             returne = new ImageIcon(getClass().getClassLoader().getResource(filename)).getImage();
         } catch (Exception e){}
 
-        if (returne.getHeight(this) == -1)
+        if (returne == null || returne.getHeight(this) == -1)
             returne =  new ImageIcon(path).getImage();
         return returne;
 
